@@ -6,23 +6,25 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 app = FastAPI(title="SHL Assessment Recommendation API")
 
-
 df = None
 vectorizer = None
 tfidf = None
 
 
+@app.on_event("startup")
 def load_model():
     global df, vectorizer, tfidf
-    if df is None:
-        df = pd.read_csv("data/shl_catalogue.csv")
-        df["combined"] = (
-            df["name"].fillna("") + " " +
-            df["description"].fillna("") + " " +
-            df["test_type"].fillna("")
-        )
-        vectorizer = TfidfVectorizer(stop_words="english")
-        tfidf = vectorizer.fit_transform(df["combined"])
+
+    df = pd.read_csv("data/shl_catalogue.csv")
+
+    df["combined"] = (
+        df["name"].fillna("") + " " +
+        df["description"].fillna("") + " " +
+        df["test_type"].fillna("")
+    )
+
+    vectorizer = TfidfVectorizer(stop_words="english")
+    tfidf = vectorizer.fit_transform(df["combined"])
 
 
 class QueryInput(BaseModel):
@@ -36,8 +38,6 @@ def health():
 
 @app.post("/recommend")
 def recommend(data: QueryInput):
-    load_model()  
-
     q_vec = vectorizer.transform([data.query])
     scores = cosine_similarity(q_vec, tfidf).flatten()
 
