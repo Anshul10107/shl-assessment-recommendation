@@ -1,0 +1,3 @@
+“The SHL product catalogue page is dynamically rendered and protected against unauthenticated scraping. Multiple attempts using static HTTP requests returned empty or blocked responses.
+To ensure reproducibility and focus on the recommendation pipeline, a structured snapshot of the SHL catalogue was created and used as the data source.
+The pipeline remains identical and can seamlessly switch to live ingestion when access is available.”

@@ -1,0 +1,6 @@
+name,url,description,test_type,duration,remote_support,adaptive_support
+Java Developer Test,https://www.shl.com/solutions/products/java-developer-test/,Assesses Java programming skills and backend development,Knowledge,60,Yes,No
+Python Developer Test,https://www.shl.com/solutions/products/python-developer-test/,Evaluates Python coding and problem solving,Knowledge,60,Yes,No
+Personality Questionnaire,https://www.shl.com/solutions/products/personality-questionnaire/,Measures workplace personality traits,Personality,45,Yes,Yes
+Cognitive Ability Test,https://www.shl.com/solutions/products/cognitive-ability-test/,Measures logical and numerical reasoning,Cognitive,30,Yes,No
+Situational Judgement Test,https://www.shl.com/solutions/products/situational-judgement-test/,Assesses decision making in work scenarios,Personality,40,Yes,No
